@@ -1,4 +1,4 @@
-require_relative '../app/bitmap_editor'
+require_relative '../lib/bitmap_editor'
 
 describe BitmapEditor do
   let(:image) { double(:image) }

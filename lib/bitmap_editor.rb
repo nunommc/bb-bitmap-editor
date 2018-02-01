@@ -8,7 +8,7 @@ class BitmapEditor
   def run(command)
     split_command = command.split(" ")
     case split_command[0]
-    when 'C'
+    when 'I'
       create(split_command)
     when 'L'
       add_colour(split_command)
@@ -17,9 +17,16 @@ class BitmapEditor
     end
   end
 
-  def create
+  def create(split_command)
     width = split_command[1].to_i
     height = split_command[2].to_i
     image.create({width: width, height: height})
+  end
+
+  def add_colour(split_command)
+    x = split_command[1].to_i
+    y = split_command[2].to_i
+    colour = split_command[3]
+    image.add_colour({x: x, y: y, colour: colour})
   end
 end
