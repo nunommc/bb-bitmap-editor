@@ -40,6 +40,12 @@ describe BitmapEditor do
 
         BitmapEditor.new(image).run('L 1 1 #000000')
       end
+
+      it "colours the pixel at 2 9 red" do
+        expect(image).to receive(:add_colour).with(x: 2, y: 9, colour: "#ff0000")
+
+        BitmapEditor.new(image).run('L 2 9 #ff0000')
+      end
     end
   end
 end
