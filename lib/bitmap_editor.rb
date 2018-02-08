@@ -12,6 +12,8 @@ class BitmapEditor
       create(split_command)
     when 'L'
       add_colour(split_command)
+    when 'V'
+      draw_vertical_colour_line(split_command)
     else
       return "Unknown command"
     end
@@ -20,6 +22,7 @@ class BitmapEditor
   def create(split_command)
     width = split_command[1].to_i
     height = split_command[2].to_i
+
     image.create({width: width, height: height})
   end
 
@@ -27,6 +30,16 @@ class BitmapEditor
     x = split_command[1].to_i
     y = split_command[2].to_i
     colour = split_command[3]
+
     image.add_colour({x: x, y: y, colour: colour})
+  end
+
+  def draw_vertical_colour_line(split_command)
+    x_column = split_command[1].to_i
+    y1_row = split_command[2].to_i
+    y2_row = split_command[3].to_i
+    colour = split_command[4]
+
+    image.draw_vertical_colour_line({x: x_column, y1: y1_row, y2: y2_row, colour: colour})
   end
 end
